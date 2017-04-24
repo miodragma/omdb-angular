@@ -1,0 +1,22 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <a class="navbar-brand" [routerLink]="['/']">Omdb</a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+        <li routerLinkActive="active"><a [routerLink]="['/films']">Search Films</a></li>
+        <li routerLinkActive="active"><a [routerLink]="['/compare-films']">Compare Films</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown" omdbFilmDropdown>
+          <a class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">Films Managment <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li routerLinkActive="active"><a [routerLink]="['/compare-films']" style="cursor: pointer">Compare Films</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,11 @@
+<a [routerLink]="film.imdbID" routerLinkActive="active" class="list-group-item clearfix">
+  <div class="pull-left">
+    <h4 class="list-group-item-heading">{{ film.Title }}</h4>
+    <p class="list-group-item-text">( {{ film.Year }} )</p>
+    <p class="list-group-item-text" style="position: absolute;bottom: 5px">Type: {{ film.Type }}</p>
+  </div>
+  <span class="pull-right" [ngSwitch]="film.Poster === 'N/A' || film.Poster !== 'N/A'">
+          <img class="img-responsive" *ngSwitchCase="film.Poster !== 'N/A'" src="{{ film.Poster }}" style="width: 90px; height: 128px">
+          <img class="img-responsive" *ngSwitchCase="film.Poster === 'N/A'" src="http://www.novelupdates.com/img/noimagefound.jpg" style="width: 90px; height: 128px">
+  </span>
+</a>

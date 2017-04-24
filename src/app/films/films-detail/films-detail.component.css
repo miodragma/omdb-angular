@@ -1,0 +1,45 @@
+.detailHeadingItems {
+  color: #adadad;
+  font-size: small;
+}
+
+.detailBodyImage {
+  width: 182px;
+  height: auto
+}
+
+.detailBodyItemsMargin {
+  margin-left: 0;
+  margin-top: 2%;
+}
+
+.detailBodyItems {
+  color: #66afe9;
+  display: inline;
+  font-size: 13px
+}
+
+.detailBodySeason {
+  color: #66afe9;
+  display: inline;
+  font-size: 16px
+}
+
+.detailBodyItemFixVotes {
+  color: #5e5e5e;
+  display: inline;
+  font-size: 13px
+}
+
+.detailMetascore{
+  background-color:#66CC33;
+  width: 28px;
+  height: 28px;
+  font-size: 13px;
+  text-align: center;
+  color: white;padding-top: 5px;
+  margin-top: 15px;
+  margin-right: 10px;
+  display: inline-block;
+  vertical-align: 33%;
+}
