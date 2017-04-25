@@ -1,4 +1,4 @@
-<a [routerLink]="film.imdbID" routerLinkActive="active" class="list-group-item clearfix">
+<a [routerLink]="film.imdbID" routerLinkActive="active" class="list-group-item clearfix" (click)="onClicked()">
   <div class="pull-left">
     <h4 class="list-group-item-heading">{{ film.Title }}</h4>
     <p class="list-group-item-text">( {{ film.Year }} )</p>

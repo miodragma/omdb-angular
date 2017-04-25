@@ -15,4 +15,12 @@ export class FilmsItemComponent implements OnInit {
   ngOnInit() {
   }
 
+  onClicked(){
+    const winWidth = window.innerWidth;
+    if (winWidth < 990){
+      const itemView = document.getElementById('item')
+        itemView.scrollIntoView({behavior: 'smooth'});
+    }
+  }
+
 }
