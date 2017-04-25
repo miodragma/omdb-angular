@@ -17,6 +17,7 @@ import { CompareFilmsComponent } from './compare-films/compare-films.component';
 import { CompareFilmsService } from "./compare-films/compare-films.service";
 import { FilmsStartComponent } from './films/films-start.component';
 import { DropdownDirective } from './films/dropdown.directive';
+import { Ng2PageScrollModule } from "ng2-page-scroll";
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { DropdownDirective } from './films/dropdown.directive';
     FormsModule,
     HttpModule,
     ReactiveFormsModule,
-    APP_ROUTES
+    APP_ROUTES,
+    Ng2PageScrollModule.forRoot()
   ],
   providers: [
     FilmsService,
