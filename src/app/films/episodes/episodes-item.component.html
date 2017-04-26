@@ -1,6 +1,6 @@
 <a (click)="onSelectedEpisode(episode.imdbID)" [ngStyle]="{cursor: 'pointer', padding: '0 3px'}" class="list-group-item clearfix">
   <div>
     <small>Episode: {{ episode.Episode }} </small>
-    <p [ngStyle]="{margin: '0'}"><b>{{ episode.Title }}</b> <small> ( {{ episode.Released }} )</small></p>
+    <p [ngStyle]="{margin: '0'}"><b>{{ episode.Title }}</b> <small [ngStyle]="{'white-space': 'nowrap'}"> ( {{ episode.Released }} )</small></p>
   </div>
 </a>
