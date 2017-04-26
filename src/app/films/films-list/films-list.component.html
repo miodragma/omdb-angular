@@ -1,19 +1,16 @@
 <div class="row">
-  <form class="navbar-form">
-    <div class="form-group">
-      <label for="title"></label>
-      <input class="form-control" [formControl]="filmFormControl" type=text id="title" autocomplete="off" autofocus>
-    </div>
+  <div class="col-xs-10">
     <button class="btn btn-default" (click)="onNext()" [disabled]="!disabledButton">Next</button>
-  </form>
-  <div class="col-xs-12">
-    <div class="panel panel-primary">
-      <div class="panel-heading text-center">Suggested search</div>
-      <div class="panel-body">
-        <ul class="list-group">
-          <omdb-film-films-item *ngFor="let film of films" [film]="film"></omdb-film-films-item>
-        </ul>
+    <form>
+      <div class="form-group">
+        <label for="title"></label>
+        <input class="form-control" [formControl]="filmFormControl" type=text id="title" autocomplete="off" autofocus>
       </div>
+    </form>
+    <div>
+      <ul class="list-group">
+        <omdb-film-films-item *ngFor="let film of films" [film]="film"></omdb-film-films-item>
+      </ul>
     </div>
   </div>
 </div>
