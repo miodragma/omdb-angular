@@ -3,13 +3,14 @@
   pageScroll [pageScrollDuration]="300" href="#item"
   routerLinkActive="active"
   class="list-group-item clearfix"
-  [ngStyle]="{'padding': '5px 5px'}">
+  [ngStyle]="{'padding': '5px 5px'}"
+>
   <span class="pull-left" [ngSwitch]="film.Poster === 'N/A' || film.Poster !== 'N/A'">
     <img class="img-responsive" *ngSwitchCase="film.Poster !== 'N/A'" src="{{ film.Poster }}" [ngStyle]="{width: '40px', height: '54px'}">
     <img class="img-responsive" *ngSwitchCase="film.Poster === 'N/A'" src="http://www.novelupdates.com/img/noimagefound.jpg" [ngStyle]="{width: '40px', height: '54px'}">
   </span>
   <div>
     <b [ngStyle]="{margin: '3px'}">{{ film.Title }} ( {{ film.Year  }} )</b>
-    <small class="pull-right">Type: {{ film.Type }}</small>
+    <small class="pull-right" [ngStyle]="{color: '#66afe9'}">{{ film.Type }}</small>
   </div>
 </a>
