@@ -1,4 +1,4 @@
-<div class="col-md-12">
+<div class="col-xs-12">
   <div class="panel panel-primary" id="item">
     <div class="panel-heading">
       <div>
@@ -20,8 +20,8 @@
      </span>
         <div [ngClass]="{detailBodyItemsMargin: true}">
           <h5 *ngIf="selectedFilm?.Plot && selectedFilm?.Plot !== 'N/A'">
-            <b [ngStyle]="{color: '#5e5e5e'}">Plot: </b>
-            <span [ngStyle]="{'font-size': 'small'}" [ngClass]="{detailBodyItems: true}">{{ selectedFilm?.Plot }}</span>
+            <b [ngStyle]="{color: '#5e5e5e'}">Summary: </b>
+            <small [ngStyle]="{color: '#5e5e5e'}" [ngClass]="{detailBodyItems: true}">{{ selectedFilm?.Plot }}</small>
           </h5>
           <h5 *ngIf="selectedFilm?.Director && selectedFilm?.Director !== 'N/A'">
             <b [ngStyle]="{color: '#5e5e5e'}">Director: </b>
