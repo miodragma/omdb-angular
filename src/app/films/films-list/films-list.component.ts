@@ -24,7 +24,7 @@ export class FilmsListComponent implements OnInit {
 
   ngOnInit() {
     this.filmFormControl.valueChanges
-      .debounceTime(700)
+      .debounceTime(500)
       .subscribe(newValue => {
         this.titleValue = newValue;
           this.filmService.getFilms(newValue)
