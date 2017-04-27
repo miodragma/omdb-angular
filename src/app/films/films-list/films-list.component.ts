@@ -1,7 +1,4 @@
-import {
-  Component,
-  OnInit
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 
@@ -19,18 +16,21 @@ export class FilmsListComponent implements OnInit {
 
   titleValue: any;
 
+  isTrue: boolean;
+
   filmFormControl = new FormControl();
 
-  constructor(private filmService: FilmsService) { }
+  constructor(private filmService: FilmsService ) { }
 
   ngOnInit() {
     this.filmFormControl.valueChanges
       .debounceTime(700)
       .subscribe(newValue => {
-        this.titleValue = newValue
+        this.titleValue = newValue;
           this.filmService.getFilms(newValue)
             .subscribe(
               data => {
+                this.isTrue = false;
                 if (data.Response !== 'False'){
                   const myArr = [];
                   for (let key in data){
@@ -40,6 +40,7 @@ export class FilmsListComponent implements OnInit {
                   this.disabledButton = true;
                   this.films = myArr[0]
                 }else {
+                  this.isTrue = true;
                   console.log("Not Found")
                 }
               }

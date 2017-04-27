@@ -8,7 +8,8 @@
       </div>
     </form>
     <div>
-      <ul class="list-group">
+      <ul class="list-group list-unstyled">
+        <li *ngIf="isTrue">Not Found</li>
         <omdb-film-films-item *ngFor="let film of films" [film]="film"></omdb-film-films-item>
       </ul>
     </div>

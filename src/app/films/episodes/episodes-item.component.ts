@@ -13,7 +13,7 @@ export class EpisodesItemComponent implements OnInit {
 
   @Input() episode: Film;
 
-  constructor(private router: Router, private route:ActivatedRoute, private filmService: FilmsService) { }
+  constructor(private router: Router ) { }
 
   ngOnInit() {
   }
