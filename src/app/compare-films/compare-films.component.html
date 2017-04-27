@@ -24,7 +24,7 @@
             <td [ngSwitch]="compareFilm?.Poster === 'N/A' || compareFilm?.Poster !== 'N/A'">
               <img *ngSwitchCase="compareFilm?.Poster !== 'N/A'" src="{{ compareFilm?.Poster }}" [ngClass]="{detailBodyImage: true}" class="img-responsive">
               <img *ngSwitchCase="compareFilm?.Poster === 'N/A'" src="http://www.novelupdates.com/img/noimagefound.jpg"  [ngClass]="{detailBodyImage: true}" class="img-responsive">
-            <td><b>{{ compareFilm.Title }}</b> ( {{ compareFilm.Year }} )</td>
+            <td><b>{{ compareFilm.Title }}</b><small [ngStyle]="{'white-space': 'nowrap'}"> ( {{ compareFilm.Year }} ) </small></td>
             <td>{{ compareFilm.Type }}</td>
             <td>{{ compareFilm.Genre }}</td>
             <td>{{ compareFilm.Awards }}</td>

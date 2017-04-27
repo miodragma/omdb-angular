@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router} from "@angular/router";
 import { Subscription} from "rxjs/Subscription";
 
@@ -47,7 +47,13 @@ export class FilmsDetailComponent implements OnInit, OnDestroy {
     )
   }
 
+  isAdd: boolean = true;
+
   onAddToCompareList(){
+    this.isAdd = !this.isAdd;
+    setTimeout(() => {
+      this.isAdd = !this.isAdd;
+    },2000)
     this.compareFilms.addFilms(this.selectedFilm)
   }
 

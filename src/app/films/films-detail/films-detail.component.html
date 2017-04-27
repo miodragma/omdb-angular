@@ -1,5 +1,6 @@
 <div class="col-xs-12">
-  <div class="panel panel-primary" id="item">
+  <h3 *ngIf="!isAdd">"{{ selectedFilm?.Title }}" successfully added to Compare Films - link</h3>
+  <div class="panel panel-primary" id="item" *ngIf="isAdd">
     <div class="panel-heading">
       <div>
         <h2>{{ selectedFilm?.Title }}<small [ngStyle]="{color: '#adadad'}"> ( {{ selectedFilm?.Year }} )</small></h2>
