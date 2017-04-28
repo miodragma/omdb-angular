@@ -1,7 +1,6 @@
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router} from "@angular/router";
 import { Subscription} from "rxjs/Subscription";
-
 
 import { Film } from "../film";
 import { FilmsService } from "../films.service";
@@ -20,6 +19,7 @@ export class FilmsDetailComponent implements OnInit, OnDestroy {
  private subscription: Subscription;
  seasons: number[] = [];
  addToCompare: string = "is not added to Compare List";
+ isAdd: boolean = false;
 
   constructor(
     private router: Router,
@@ -41,7 +41,8 @@ export class FilmsDetailComponent implements OnInit, OnDestroy {
               }
               this.seasons = myArr;
             }
-            this.addToCompare = "is not added to Compare List"
+            this.isAdd = !this.isAdd
+            this.addToCompare = "is not added to Compare List";
             this.selectedFilm = data
           }
         )
@@ -50,6 +51,7 @@ export class FilmsDetailComponent implements OnInit, OnDestroy {
   }
 
   onAddToCompareList(){
+    this.isAdd = !this.isAdd
     this.addToCompare = "has been added successfully to Compare List";
     this.compareFilms.addFilms(this.selectedFilm)
   }
