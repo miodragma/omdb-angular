@@ -1,6 +1,5 @@
 <div class="col-xs-12">
-  <h3 *ngIf="!isAdd">"{{ selectedFilm?.Title }}" successfully added to Compare Films - link</h3>
-  <div class="panel panel-primary" id="item" *ngIf="isAdd">
+  <div class="panel panel-primary" id="item">
     <div class="panel-heading">
       <div>
         <h2>{{ selectedFilm?.Title }}<small [ngStyle]="{color: '#adadad'}"> ( {{ selectedFilm?.Year }} )</small></h2>
@@ -64,5 +63,6 @@
       <p class="text-center"><b>{{ selectedFilm?.Awards }}</b></p>
     </div>
   </div>
-  <button class="btn btn-success" (click)="onAddToCompareList()">To Compare List</button>
+  <button class="btn btn-success" (click)="onAddToCompareList()">Add to Compare List</button>
+  <p>"{{ selectedFilm?.Title }}" {{ addToCompare }}</p>
 </div>

@@ -19,6 +19,7 @@ export class FilmsDetailComponent implements OnInit, OnDestroy {
  private filmsIndex: any;
  private subscription: Subscription;
  seasons: number[] = [];
+ addToCompare: string = "is not added to Compare List";
 
   constructor(
     private router: Router,
@@ -40,6 +41,7 @@ export class FilmsDetailComponent implements OnInit, OnDestroy {
               }
               this.seasons = myArr;
             }
+            this.addToCompare = "is not added to Compare List"
             this.selectedFilm = data
           }
         )
@@ -47,13 +49,8 @@ export class FilmsDetailComponent implements OnInit, OnDestroy {
     )
   }
 
-  isAdd: boolean = true;
-
   onAddToCompareList(){
-    this.isAdd = !this.isAdd;
-    setTimeout(() => {
-      this.isAdd = !this.isAdd;
-    },2000)
+    this.addToCompare = "has been added successfully to Compare List";
     this.compareFilms.addFilms(this.selectedFilm)
   }
 

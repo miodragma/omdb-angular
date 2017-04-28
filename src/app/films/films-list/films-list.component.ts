@@ -16,31 +16,31 @@ export class FilmsListComponent implements OnInit {
 
   titleValue: any;
 
-  isTrue: boolean;
-
   filmFormControl = new FormControl();
+
+  searchResult: string = ""
 
   constructor(private filmService: FilmsService ) { }
 
   ngOnInit() {
     this.filmFormControl.valueChanges
-      .debounceTime(500)
+      .debounceTime(50)
       .subscribe(newValue => {
         this.titleValue = newValue;
           this.filmService.getFilms(newValue)
             .subscribe(
               data => {
-                this.isTrue = false;
                 if (data.Response !== 'False'){
                   const myArr = [];
                   for (let key in data){
                     myArr.push(data[key])
                   }
+                  this.searchResult = `Result for "${this.titleValue}"`;
                   this.count = 1;
                   this.disabledButton = true;
                   this.films = myArr[0]
                 }else {
-                  this.isTrue = true;
+                  this.searchResult = `"${this.titleValue}" Not Found or needs to be more specific`;
                   console.log("Not Found")
                 }
               }
