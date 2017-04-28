@@ -3,11 +3,13 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'omdb-film-header',
   templateUrl: './header.component.html',
-  styles: []
+  styles: [`
+    pushContent{
+      margin-bottom: 550%;
+    }
+  `]
 })
 export class HeaderComponent implements OnInit {
-
-  isNavbarCollapsed: boolean = true;
 
   constructor() { }
 

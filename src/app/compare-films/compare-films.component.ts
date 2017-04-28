@@ -11,12 +11,9 @@ export class CompareFilmsComponent implements OnInit {
 
   compareFilms: Film[] = [];
 
-  isAdd: boolean = true;
-
   constructor(private compareFilmsService: CompareFilmsService) { }
 
   ngOnInit() {
-    this.isAdd = false
     this.compareFilms = this.compareFilmsService.getCompareFilms()
   }
 

@@ -41,7 +41,7 @@ export class FilmsDetailComponent implements OnInit, OnDestroy {
               }
               this.seasons = myArr;
             }
-            this.isAdd = !this.isAdd
+            this.isAdd = false;
             this.addToCompare = "is not added to Compare List";
             this.selectedFilm = data
           }

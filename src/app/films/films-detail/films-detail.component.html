@@ -63,6 +63,6 @@
       <p class="text-center"><b>{{ selectedFilm?.Awards }}</b></p>
     </div>
   </div>
-  <button class="btn btn-success" (click)="onAddToCompareList()" [disabled]="!isAdd">Add to Compare List</button>
+  <button class="btn btn-success" (click)="onAddToCompareList()" [disabled]="isAdd">Add to Compare List</button>
   <p>"{{ selectedFilm?.Title }}" {{ addToCompare }}</p>
 </div>
