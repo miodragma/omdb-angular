@@ -5,75 +5,77 @@
       <div class="dot2"></div>
     </div>    <p>Loading...</p>
   </div>
-  <div *ngIf="isDone" id="item">
-  <div class="panel panel-primary">
-    <div class="panel-heading">
-      <div>
-        <h2>{{ selectedFilm?.Title }}<small [ngStyle]="{color: '#adadad'}"> ( {{ selectedFilm?.Year }} )</small></h2>
-      </div>
-        <div>
-          <span *ngIf="selectedFilm?.Rated && selectedFilm?.Rated !== 'N/A'" [ngClass]="{detailHeadingItems: true}"> {{ selectedFilm?.Rated }} |</span>
-          <span *ngIf="selectedFilm?.Runtime && selectedFilm?.Runtime !== 'N/A'" [ngClass]="{detailHeadingItems: true}"> {{ selectedFilm?.Runtime }} |</span>
-          <span *ngIf="selectedFilm?.Genre && selectedFilm?.Genre !== 'N/A'" [ngClass]="{detailHeadingItems: true}"> {{ selectedFilm?.Genre }} |</span>
-          <span *ngIf="selectedFilm?.Language && selectedFilm?.Language !== 'N/A'" [ngClass]="{detailHeadingItems: true}"> {{ selectedFilm?.Language }} |</span>
-          <span *ngIf="selectedFilm?.Released && selectedFilm?.Released !== 'N/A'" [ngClass]="{detailHeadingItems: true}"> {{ selectedFilm?.Released }}</span>
-          <span *ngIf="selectedFilm?.Country && selectedFilm?.Country !== 'N/A'" [ngClass]="{detailHeadingItems: true}"> ({{ selectedFilm?.Country }}) </span>
+  <div id="item">
+    <div *ngIf="isDone">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <div>
+            <h2>{{ selectedFilm?.Title }}<small [ngStyle]="{color: '#adadad'}"> ( {{ selectedFilm?.Year }} )</small></h2>
+          </div>
+          <div>
+            <span *ngIf="selectedFilm?.Rated && selectedFilm?.Rated !== 'N/A'" [ngClass]="{detailHeadingItems: true}"> {{ selectedFilm?.Rated }} |</span>
+            <span *ngIf="selectedFilm?.Runtime && selectedFilm?.Runtime !== 'N/A'" [ngClass]="{detailHeadingItems: true}"> {{ selectedFilm?.Runtime }} |</span>
+            <span *ngIf="selectedFilm?.Genre && selectedFilm?.Genre !== 'N/A'" [ngClass]="{detailHeadingItems: true}"> {{ selectedFilm?.Genre }} |</span>
+            <span *ngIf="selectedFilm?.Language && selectedFilm?.Language !== 'N/A'" [ngClass]="{detailHeadingItems: true}"> {{ selectedFilm?.Language }} |</span>
+            <span *ngIf="selectedFilm?.Released && selectedFilm?.Released !== 'N/A'" [ngClass]="{detailHeadingItems: true}"> {{ selectedFilm?.Released }}</span>
+            <span *ngIf="selectedFilm?.Country && selectedFilm?.Country !== 'N/A'" [ngClass]="{detailHeadingItems: true}"> ({{ selectedFilm?.Country }}) </span>
+          </div>
         </div>
-    </div>
-      <div class="panel-body">
+        <div class="panel-body">
         <span class="pull-left" [ngSwitch]="selectedFilm?.Poster === 'N/A' || selectedFilm?.Poster !== 'N/A'" [ngStyle]="{'margin-right': '15px', 'margin-bottom': '15px'}">
           <img *ngSwitchCase="selectedFilm?.Poster !== 'N/A'" src="{{ selectedFilm?.Poster }}" [ngClass]="{detailBodyImage: true}" class="img-responsive">
           <img *ngSwitchCase="selectedFilm?.Poster === 'N/A'" src="http://www.novelupdates.com/img/noimagefound.jpg"  [ngClass]="{detailBodyImage: true}" class="img-responsive">
      </span>
-        <div [ngClass]="{detailBodyItemsMargin: true}">
-          <h5 *ngIf="selectedFilm?.Plot && selectedFilm?.Plot !== 'N/A'">
-            <b [ngStyle]="{color: '#5e5e5e'}">Summary: </b>
-            <small [ngStyle]="{color: '#5e5e5e'}" [ngClass]="{detailBodyItems: true}">{{ selectedFilm?.Plot }}</small>
-          </h5>
-          <h5 *ngIf="selectedFilm?.Director && selectedFilm?.Director !== 'N/A'">
-            <b [ngStyle]="{color: '#5e5e5e'}">Director: </b>
-            <span [ngClass]="{detailBodyItems: true}">{{ selectedFilm?.Director }}</span>
-          </h5>
-          <h5 *ngIf="selectedFilm?.Writer && selectedFilm?.Writer !== 'N/A'">
-            <b [ngStyle]="{color: '#5e5e5e'}">Writer: </b>
-            <span [ngClass]="{detailBodyItems: true}">{{ selectedFilm?.Writer }}</span>
-          </h5>
-          <h5 *ngIf="selectedFilm?.Actors && selectedFilm?.Actors !== 'N/A'">
-            <b [ngStyle]="{color: '#5e5e5e'}">Stars: </b>
-            <span [ngClass]="{detailBodyItems: true}">{{ selectedFilm?.Actors }}</span>
-          </h5>
-          <h5 *ngIf="selectedFilm?.Production && selectedFilm?.Production !== 'N/A'">
-            <b [ngStyle]="{color: '#5e5e5e'}">Production: </b>
-            <span [ngClass]="{detailBodyItems: true}">{{ selectedFilm?.Production }}</span>
-          </h5>
-          <h5 *ngIf="selectedFilm?.Website && selectedFilm?.Website !== 'N/A'">
-            <b [ngStyle]="{color: '#5e5e5e'}">Web: </b>
-            <a href="{{ selectedFilm?.Website }}" target="_blank" [ngClass]="{detailBodyItems: true}">{{ selectedFilm?.Website }}</a>
-          </h5>
+          <div [ngClass]="{detailBodyItemsMargin: true}">
+            <h5 *ngIf="selectedFilm?.Plot && selectedFilm?.Plot !== 'N/A'">
+              <b [ngStyle]="{color: '#5e5e5e'}">Summary: </b>
+              <small [ngStyle]="{color: '#5e5e5e'}" [ngClass]="{detailBodyItems: true}">{{ selectedFilm?.Plot }}</small>
+            </h5>
+            <h5 *ngIf="selectedFilm?.Director && selectedFilm?.Director !== 'N/A'">
+              <b [ngStyle]="{color: '#5e5e5e'}">Director: </b>
+              <span [ngClass]="{detailBodyItems: true}">{{ selectedFilm?.Director }}</span>
+            </h5>
+            <h5 *ngIf="selectedFilm?.Writer && selectedFilm?.Writer !== 'N/A'">
+              <b [ngStyle]="{color: '#5e5e5e'}">Writer: </b>
+              <span [ngClass]="{detailBodyItems: true}">{{ selectedFilm?.Writer }}</span>
+            </h5>
+            <h5 *ngIf="selectedFilm?.Actors && selectedFilm?.Actors !== 'N/A'">
+              <b [ngStyle]="{color: '#5e5e5e'}">Stars: </b>
+              <span [ngClass]="{detailBodyItems: true}">{{ selectedFilm?.Actors }}</span>
+            </h5>
+            <h5 *ngIf="selectedFilm?.Production && selectedFilm?.Production !== 'N/A'">
+              <b [ngStyle]="{color: '#5e5e5e'}">Production: </b>
+              <span [ngClass]="{detailBodyItems: true}">{{ selectedFilm?.Production }}</span>
+            </h5>
+            <h5 *ngIf="selectedFilm?.Website && selectedFilm?.Website !== 'N/A'">
+              <b [ngStyle]="{color: '#5e5e5e'}">Web: </b>
+              <a href="{{ selectedFilm?.Website }}" target="_blank" [ngClass]="{detailBodyItems: true}">{{ selectedFilm?.Website }}</a>
+            </h5>
             <small [ngStyle]="{color: '#5e5e5e'}">link to IMDB: </small>
             <a href="{{ linkToImdb }}" target="_blank" [ngClass]="{detailBodyItems: true}">Click to GO!</a>
-          <h5 *ngIf="selectedFilm?.totalSeasons">
-            <b [ngStyle]="{color: '#5e5e5e'}">Seasons: </b>
-            <span *ngFor="let season of seasons;">
+            <h5 *ngIf="selectedFilm?.totalSeasons">
+              <b [ngStyle]="{color: '#5e5e5e'}">Seasons: </b>
+              <span *ngFor="let season of seasons;">
               <a (click)="onSelectedSeasons(season)" style="cursor: pointer" [ngClass]="{detailBodySeason: true}">{{ season }}</a>
             </span>
-          </h5>
-        </div>
-        <div [ngClass]="{detailBodyItemsMargin: true}">
-          <span *ngIf="selectedFilm?.Metascore && selectedFilm?.Metascore !== 'N/A'" [ngClass]="{detailMetascore: true}">{{ selectedFilm?.Metascore }}</span>
-          <h2 *ngIf="selectedFilm?.imdbRating && selectedFilm?.imdbRating !== 'N/A'" [ngStyle]="{display: 'inline'}">{{ selectedFilm?.imdbRating }}</h2>
-          <span *ngIf="selectedFilm?.imdbVotes && selectedFilm?.imdbVotes !== 'N/A'">
+            </h5>
+          </div>
+          <div [ngClass]="{detailBodyItemsMargin: true}">
+            <span *ngIf="selectedFilm?.Metascore && selectedFilm?.Metascore !== 'N/A'" [ngClass]="{detailMetascore: true}">{{ selectedFilm?.Metascore }}</span>
+            <h2 *ngIf="selectedFilm?.imdbRating && selectedFilm?.imdbRating !== 'N/A'" [ngStyle]="{display: 'inline'}">{{ selectedFilm?.imdbRating }}</h2>
+            <span *ngIf="selectedFilm?.imdbVotes && selectedFilm?.imdbVotes !== 'N/A'">
             <span [ngClass]="{detailBodyItemFixVotes: true}">/10 | Votes: </span>
             <span [ngClass]="{detailBodyItems: true}">{{ selectedFilm?.imdbVotes }}</span>
           </span>
+          </div>
+        </div>
+        <div *ngIf="selectedFilm?.Awards && selectedFilm?.Awards !== 'N/A'" [ngStyle]="{'background-color': '#EFE3A4'}">
+          <p class="text-center"><b>{{ selectedFilm?.Awards }}</b></p>
         </div>
       </div>
-    <div *ngIf="selectedFilm?.Awards && selectedFilm?.Awards !== 'N/A'" [ngStyle]="{'background-color': '#EFE3A4'}">
-      <p class="text-center"><b>{{ selectedFilm?.Awards }}</b></p>
+      <button class="btn btn-success" (click)="onAddToCompareList()" [disabled]="isAdd">Add to Compare List</button>
+      <span *ngIf="selectedFilm.Type === 'episode'"><button class="btn btn-primary" (click)="onClickedBack()">Back</button></span>
+      <p>"{{ selectedFilm?.Title }}" {{ addToCompare }}</p>
     </div>
-  </div>
-  <button class="btn btn-success" (click)="onAddToCompareList()" [disabled]="isAdd">Add to Compare List</button>
-    <span *ngIf="selectedFilm.Type === 'episode'"><button class="btn btn-primary" (click)="onClickedBack()">Back</button></span>
-  <p>"{{ selectedFilm?.Title }}" {{ addToCompare }}</p>
   </div>
 </div>

@@ -24,8 +24,4 @@ export class FilmsService {
   getSeasons(idIndex: any, index: any){
     return this.http.get(`https://www.omdbapi.com/?i=${idIndex}&Season=${index}`).map((response: Response) => response.json())
   }
-
-  getImdbLink(imdb: any){
-    return `http://www.imdb.com/title/${imdb}/`
-  }
 }

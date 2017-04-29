@@ -50,7 +50,7 @@ export class FilmsDetailComponent implements OnInit, OnDestroy {
             this.selectedFilm = data;
             this.isDone = true;
             this.isAdd = false;
-            this.linkToImdb = this.filmsService.getImdbLink(this.filmsIndex)
+            this.linkToImdb = `http://www.imdb.com/title/${this.filmsIndex}/`
           }
         )
       }
