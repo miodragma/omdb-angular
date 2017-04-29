@@ -1,12 +1,19 @@
 <div class="row">
   <div class="col-xs-12">
-    <div class="panel panel-primary">
-      <div class="panel-heading text-center">{{ title }} | Season: {{ titleSeason }}</div>
-      <div class="panel-body">
-        <ul class="list-group">
-          <omdb-film-episodes-item *ngFor="let episode of episodes" [episode]="episode"></omdb-film-episodes-item>
-        </ul>
+    <div *ngIf="!isDone">
+      <img src="/src/app/items/images/ring.gif">
+      <p>Loading...</p>
+    </div>
+    <div *ngIf="isDone">
+      <div class="panel panel-primary">
+        <div class="panel-heading text-center">{{ title }} | Season: {{ titleSeason }}</div>
+        <div class="panel-body">
+          <ul class="list-group">
+            <omdb-film-episodes-item *ngFor="let episode of episodes" [episode]="episode"></omdb-film-episodes-item>
+          </ul>
+        </div>
       </div>
+      <button class="btn btn-primary" (click)="onClickedBack()">Back</button>
     </div>
   </div>
 </div>

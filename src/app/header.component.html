@@ -12,8 +12,8 @@
     </div>
     <div class="collapse navbar-collapse" [ngbCollapse]="isNavbarCollapsed" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li routerLinkActive="active"><a [routerLink]="['/films']">Search Films</a></li>
-        <li routerLinkActive="active"><a [routerLink]="['/compare-films']">Compare List</a></li>
+        <li routerLinkActive="active"><a [routerLink]="['/films']" (click)="onClickedBackLink()">Search Films</a></li>
+        <li routerLinkActive="active"><a [routerLink]="['/compare-films']">Compare List <span class="badge">{{ countLength }}</span></a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown" omdbFilmDropdown>

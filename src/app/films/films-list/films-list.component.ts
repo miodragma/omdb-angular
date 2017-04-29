@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
-
 import { FilmsService } from "../films.service";
 import { Film } from "../film";
 
@@ -18,14 +17,26 @@ export class FilmsListComponent implements OnInit {
 
   filmFormControl = new FormControl();
 
-  searchResult: string = ""
+  searchResult: string = "";
+  count: number = 1;
 
-  constructor(private filmService: FilmsService ) { }
+  disabledNextButton: boolean = true;
+
+  disabledPrevButton: boolean = true;
+
+  isDone: boolean = true;
+
+  constructor(private filmService: FilmsService) {
+    if (this.count === 1) {
+      this.disabledPrevButton = false
+    }
+  }
 
   ngOnInit() {
     this.filmFormControl.valueChanges
       .debounceTime(50)
       .subscribe(newValue => {
+        this.isDone = false;
         this.titleValue = newValue;
           this.filmService.getFilms(newValue)
             .subscribe(
@@ -37,10 +48,13 @@ export class FilmsListComponent implements OnInit {
                   }
                   this.searchResult = `Result for "${this.titleValue}"`;
                   this.count = 1;
-                  this.disabledButton = true;
-                  this.films = myArr[0]
+                  this.disabledNextButton = true;
+                  this.films = myArr[0];
+                  this.isDone = true;
                 }else {
+                  this.isDone = true;
                   this.searchResult = `"${this.titleValue}" Not Found or needs to be more specific`;
+                  this.films = null;
                   console.log("Not Found")
                 }
               }
@@ -49,12 +63,11 @@ export class FilmsListComponent implements OnInit {
       )
   }
 
-  count: number = 1;
-
-  disabledButton: boolean = true;
-
   onNext(){
-    this.count++;
+    if (this.count >= 1) {
+      this.disabledPrevButton = true
+    }
+      this.count++;
     this.filmService.getNextFilms(this.titleValue, this.count)
       .subscribe(
         data => {
@@ -65,8 +78,30 @@ export class FilmsListComponent implements OnInit {
             }
             this.films = myArr[0]
           }else {
-            console.log("Not Found")
-            this.disabledButton = false
+            console.log("Not Found");
+            this.disabledNextButton = false
+          }
+        }
+      )
+  }
+
+  onPrevious(){
+    if (this.count <= 2){
+      this.disabledPrevButton = false
+    }
+    this.count--;
+    this.filmService.getNextFilms(this.titleValue, this.count)
+      .subscribe(
+        data => {
+          if (data.Response !== 'False'){
+            const myArr = [];
+            for (let key in data){
+              myArr.push(data[key])
+            }
+            this.films = myArr[0];
+            this.disabledNextButton = true
+          }else {
+            console.log("Not Found");
           }
         }
       )

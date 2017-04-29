@@ -6,14 +6,23 @@ export class CompareFilmsService {
 
   private compareFilms: Film[] = [];
 
-  constructor() { }
+  filmsLength: number = 0;
 
   getCompareFilms(){
     return this.compareFilms
   }
 
   addFilms(compareFilms: Film){
-    this.compareFilms.push(compareFilms)
+    this.compareFilms.push(compareFilms);
+    this.filmsLength = this.compareFilms.length;
+  }
+
+  removeFilmsLength(length: number){
+    this.filmsLength = length
+  }
+
+  getFilmsLength(){
+    return this.filmsLength
   }
 
 }

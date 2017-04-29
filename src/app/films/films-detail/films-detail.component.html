@@ -1,4 +1,9 @@
 <div class="col-xs-12">
+  <div *ngIf="!isDone">
+    <img src="/src/app/items/images/ring.gif">
+    <p>Loading...</p>
+  </div>
+  <div *ngIf="isDone">
   <div class="panel panel-primary" id="item">
     <div class="panel-heading">
       <div>
@@ -43,6 +48,8 @@
             <b [ngStyle]="{color: '#5e5e5e'}">Web: </b>
             <a href="{{ selectedFilm?.Website }}" target="_blank" [ngClass]="{detailBodyItems: true}">{{ selectedFilm?.Website }}</a>
           </h5>
+            <small [ngStyle]="{color: '#5e5e5e'}">link to IMDB: </small>
+            <a href="{{ linkToImdb }}" target="_blank" [ngClass]="{detailBodyItems: true}">Click to GO!</a>
           <h5 *ngIf="selectedFilm?.totalSeasons">
             <b [ngStyle]="{color: '#5e5e5e'}">Seasons: </b>
             <span *ngFor="let season of seasons;">
@@ -64,5 +71,7 @@
     </div>
   </div>
   <button class="btn btn-success" (click)="onAddToCompareList()" [disabled]="isAdd">Add to Compare List</button>
+    <span *ngIf="selectedFilm.Type === 'episode'"><button class="btn btn-primary" (click)="onClickedBack()">Back</button></span>
   <p>"{{ selectedFilm?.Title }}" {{ addToCompare }}</p>
+  </div>
 </div>

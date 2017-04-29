@@ -1,17 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck } from '@angular/core';
+import { Location } from '@angular/common';
+import { CompareFilmsService } from "./compare-films/compare-films.service";
 
 @Component({
   selector: 'omdb-film-header',
   templateUrl: './header.component.html',
   styles: []
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements DoCheck {
 
   isNavbarCollapsed: boolean = true;
 
-  constructor() { }
+  countLength: number;
 
-  ngOnInit() {
+  constructor(private compareFilmsService: CompareFilmsService, private location: Location){
+  }
+
+  ngDoCheck() {
+     this.countLength = this.compareFilmsService.getFilmsLength()
+  }
+
+  onClickedBackLink(){
+     return this.location.back()
   }
 
 }

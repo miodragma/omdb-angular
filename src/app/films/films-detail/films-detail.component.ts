@@ -5,6 +5,7 @@ import { Subscription} from "rxjs/Subscription";
 import { Film } from "../film";
 import { FilmsService } from "../films.service";
 import { CompareFilmsService } from "../../compare-films/compare-films.service";
+import { Location } from "@angular/common";
 
 
 @Component({
@@ -15,22 +16,26 @@ import { CompareFilmsService } from "../../compare-films/compare-films.service";
 export class FilmsDetailComponent implements OnInit, OnDestroy {
 
  selectedFilm: Film;
- private filmsIndex: any;
+ filmsIndex: any;
  private subscription: Subscription;
  seasons: number[] = [];
  addToCompare: string = "is not added to Compare List";
  isAdd: boolean = false;
+ isDone: boolean = false;
+ linkToImdb: any;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private filmsService: FilmsService,
-    private compareFilms: CompareFilmsService
+    private compareFilms: CompareFilmsService,
+    private location: Location
   ) { }
 
   ngOnInit() {
     this.subscription = this.route.params.subscribe(
       (params: any) => {
+        this.isDone = false;
         this.filmsIndex = params['id'];
         this.filmsService.getDetails(this.filmsIndex).subscribe(
           data => {
@@ -41,9 +46,11 @@ export class FilmsDetailComponent implements OnInit, OnDestroy {
               }
               this.seasons = myArr;
             }
-            this.isAdd = false;
             this.addToCompare = "is not added to Compare List";
-            this.selectedFilm = data
+            this.selectedFilm = data;
+            this.isDone = true;
+            this.isAdd = false;
+            this.linkToImdb = this.filmsService.getImdbLink(this.filmsIndex)
           }
         )
       }
@@ -51,13 +58,17 @@ export class FilmsDetailComponent implements OnInit, OnDestroy {
   }
 
   onAddToCompareList(){
-    this.isAdd = !this.isAdd
+    this.isAdd = !this.isAdd;
     this.addToCompare = "has been added successfully to Compare List";
     this.compareFilms.addFilms(this.selectedFilm)
   }
 
   onSelectedSeasons(season: any){
-    this.router.navigate(['/films', this.filmsIndex, season])
+    this.router.navigate(['/films', this.filmsIndex, season]);
+  }
+
+  onClickedBack(){
+    this.location.back()
   }
 
   ngOnDestroy(){

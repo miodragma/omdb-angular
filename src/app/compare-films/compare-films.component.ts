@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CompareFilmsService } from "./compare-films.service";
 import { Film } from "../films/film";
 
@@ -14,11 +14,11 @@ export class CompareFilmsComponent implements OnInit {
   constructor(private compareFilmsService: CompareFilmsService) { }
 
   ngOnInit() {
-    this.compareFilms = this.compareFilmsService.getCompareFilms()
+    this.compareFilms = this.compareFilmsService.getCompareFilms();
   }
 
   onDelete(compareFilm: number){
+    this.compareFilmsService.removeFilmsLength(this.compareFilms.length - 1)
     this.compareFilms.splice(compareFilm, 1)
   }
-
 }
