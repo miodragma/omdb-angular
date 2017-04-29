@@ -68,6 +68,7 @@ export class FilmsListComponent implements OnInit {
       this.disabledPrevButton = true
     }
       this.count++;
+    this.isDone = false;
     this.filmService.getNextFilms(this.titleValue, this.count)
       .subscribe(
         data => {
@@ -77,7 +78,10 @@ export class FilmsListComponent implements OnInit {
               myArr.push(data[key])
             }
             this.films = myArr[0]
+            this.isDone = true
           }else {
+            this.isDone = true;
+            this.films = null;
             console.log("Not Found");
             this.disabledNextButton = false
           }
@@ -90,6 +94,7 @@ export class FilmsListComponent implements OnInit {
       this.disabledPrevButton = false
     }
     this.count--;
+    this.isDone = false;
     this.filmService.getNextFilms(this.titleValue, this.count)
       .subscribe(
         data => {
@@ -99,8 +104,11 @@ export class FilmsListComponent implements OnInit {
               myArr.push(data[key])
             }
             this.films = myArr[0];
+            this.isDone = true;
             this.disabledNextButton = true
           }else {
+            this.isDone  = true;
+            this.films = null;
             console.log("Not Found");
           }
         }
