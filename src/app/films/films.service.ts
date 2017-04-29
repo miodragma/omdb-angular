@@ -5,6 +5,8 @@ import 'rxjs';
 @Injectable()
 export class FilmsService {
 
+  tit: string;
+
   constructor(private http: Http) { }
 
   getFilms(titleValue: any){
@@ -26,5 +28,4 @@ export class FilmsService {
   getImdbLink(imdb: any){
     return `http://www.imdb.com/title/${imdb}/`
   }
-
 }

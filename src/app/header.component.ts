@@ -2,6 +2,7 @@ import { Component, DoCheck } from '@angular/core';
 import { Location } from '@angular/common';
 import { CompareFilmsService } from "./compare-films/compare-films.service";
 
+
 @Component({
   selector: 'omdb-film-header',
   templateUrl: './header.component.html',
@@ -19,9 +20,4 @@ export class HeaderComponent implements DoCheck {
   ngDoCheck() {
      this.countLength = this.compareFilmsService.getFilmsLength()
   }
-
-  onClickedBackLink(){
-     return this.location.back()
-  }
-
 }

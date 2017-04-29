@@ -5,14 +5,14 @@
     <form>
       <div class="form-group" [ngStyle]="{'margin-bottom': '0'}">
         <label for="title"></label>
-        <input class="form-control" [formControl]="filmFormControl" type=text id="title" autocomplete="off" autofocus>
+        <input class="form-control" placeholder="Search..." [formControl]="filmFormControl" type=text id="title" autocomplete="off" autofocus>
       </div>
     </form>
     <div>
       <ul class="list-group list-unstyled">
         <li>{{ searchResult }}</li>
         <li *ngIf="!isDone">
-          <img src="/src/app/items/images/ring.gif">
+          <img src="/src/app/items/images/ring.svg">
           <p>Loading...</p>
         </li>
         <li *ngIf="isDone">

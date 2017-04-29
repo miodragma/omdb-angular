@@ -34,16 +34,16 @@ export class FilmsListComponent implements OnInit {
 
   ngOnInit() {
     this.filmFormControl.valueChanges
-      .debounceTime(50)
+      .debounceTime(200)
       .subscribe(newValue => {
-        this.isDone = false;
-        this.titleValue = newValue;
+          this.isDone = false;
+          this.titleValue = newValue;
           this.filmService.getFilms(newValue)
             .subscribe(
               data => {
-                if (data.Response !== 'False'){
+                if (data.Response !== 'False') {
                   const myArr = [];
-                  for (let key in data){
+                  for (let key in data) {
                     myArr.push(data[key])
                   }
                   this.searchResult = `Result for "${this.titleValue}"`;
@@ -51,15 +51,15 @@ export class FilmsListComponent implements OnInit {
                   this.disabledNextButton = true;
                   this.films = myArr[0];
                   this.isDone = true;
-                }else {
+                } else {
                   this.isDone = true;
-                  this.searchResult = `"${this.titleValue}" Not Found or needs to be more specific`;
                   this.films = null;
+                  this.searchResult = `"${this.titleValue}" Not Found or needs to be more specific`;
                   console.log("Not Found")
                 }
               }
             )
-          }
+        }
       )
   }
 
