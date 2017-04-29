@@ -1,7 +1,9 @@
 <div class="col-xs-12">
   <div *ngIf="!isDone">
-    <img src="src/app/items/images/ring.gif">
-    <p>Loading...</p>
+    <div class="spinner">
+      <div class="dot1"></div>
+      <div class="dot2"></div>
+    </div>    <p>Loading...</p>
   </div>
   <div *ngIf="isDone">
   <div class="panel panel-primary" id="item">
