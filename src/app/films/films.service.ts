@@ -10,11 +10,11 @@ export class FilmsService {
   constructor(private http: Http) { }
 
   getFilms(titleValue: any){
-    return this.http.get(`https://www.omdbapi.com/?s=${titleValue}`).map((response: Response) => response.json())
+    return this.http.get(`https://www.omdbapi.com/?s=${titleValue}*`).map((response: Response) => response.json())
   }
 
   getNextFilms(titleValue: any, pageValue: number){
-    return this.http.get(`https://www.omdbapi.com/?s=${titleValue}&page=${pageValue}`).map((response: Response) => response.json())
+    return this.http.get(`https://www.omdbapi.com/?s=${titleValue}*&page=${pageValue}`).map((response: Response) => response.json())
   }
 
   getDetails(value: any){

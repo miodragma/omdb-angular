@@ -54,7 +54,11 @@ export class FilmsListComponent implements OnInit {
                 } else {
                   this.isDone = true;
                   this.films = null;
-                  this.searchResult = `"${this.titleValue}" Not Found or needs to be more specific`;
+                  if (this.titleValue == ""){
+                    this.searchResult = `Please Search!`;
+                  }else {
+                    this.searchResult = `"${this.titleValue}" Not Found or needs to be more specific.`;
+                  }
                   console.log("Not Found")
                 }
               }

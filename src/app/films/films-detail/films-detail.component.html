@@ -5,8 +5,8 @@
       <div class="dot2"></div>
     </div>    <p>Loading...</p>
   </div>
-  <div *ngIf="isDone">
-  <div class="panel panel-primary" id="item">
+  <div *ngIf="isDone" id="item">
+  <div class="panel panel-primary">
     <div class="panel-heading">
       <div>
         <h2>{{ selectedFilm?.Title }}<small [ngStyle]="{color: '#adadad'}"> ( {{ selectedFilm?.Year }} )</small></h2>
