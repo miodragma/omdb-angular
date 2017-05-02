@@ -23,6 +23,7 @@ export class FilmsDetailComponent implements OnInit, OnDestroy {
  isAdd: boolean = false;
  isDone: boolean = false;
  linkToImdb: any;
+ titleValue: string;
 
   constructor(
     private router: Router,
@@ -37,6 +38,7 @@ export class FilmsDetailComponent implements OnInit, OnDestroy {
       (params: any) => {
         this.isDone = false;
         this.filmsIndex = params['id'];
+        this.titleValue = params['q'];
         this.filmsService.getDetails(this.filmsIndex).subscribe(
           data => {
             if (data.Type === 'series'){
@@ -64,7 +66,7 @@ export class FilmsDetailComponent implements OnInit, OnDestroy {
   }
 
   onSelectedSeasons(season: any){
-    this.router.navigate(['/films', this.filmsIndex, season]);
+    this.router.navigate(['/films', this.titleValue, this.filmsIndex, season]);
   }
 
   onClickedBack(){

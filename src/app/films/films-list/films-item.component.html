@@ -1,5 +1,5 @@
 <a
-  [routerLink]="film.imdbID"
+  [routerLink]="[film.Title, film.imdbID]"
   pageScroll [pageScrollDuration]="500" href="#item"
   routerLinkActive="active"
   class="list-group-item clearfix"

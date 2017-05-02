@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Router} from "@angular/router";
 
 import { FilmsService } from "../films.service";
 import { Film } from "../film";
@@ -12,25 +13,17 @@ import { Film } from "../film";
 export class FilmsListComponent implements OnInit {
 
   films: Film[] = [];
-
   titleValue: any;
-
   filmFormControl = new FormControl();
-
   searchResult: string = "";
   count: number = 1;
-
-  disabledNextButton: boolean = true;
-
-  disabledPrevButton: boolean = true;
-
   isDone: boolean = true;
 
-  constructor(private filmService: FilmsService) {
-    if (this.count === 1) {
-      this.disabledPrevButton = false
-    }
-  }
+  constructor(
+    private filmService: FilmsService,
+    private router: Router,
+  )
+  {}
 
   ngOnInit() {
     this.filmFormControl.valueChanges
@@ -38,7 +31,7 @@ export class FilmsListComponent implements OnInit {
       .subscribe(newValue => {
           this.isDone = false;
           this.titleValue = newValue;
-          this.filmService.getFilms(newValue)
+        this.filmService.getFilms(newValue)
             .subscribe(
               data => {
                 if (data.Response !== 'False') {
@@ -48,12 +41,11 @@ export class FilmsListComponent implements OnInit {
                   }
                   this.searchResult = `Result for "${this.titleValue}"`;
                   this.count = 1;
-                  this.disabledNextButton = true;
                   this.films = myArr[0];
                   this.isDone = true;
                 } else {
                   this.isDone = true;
-                  this.films = null;
+                  this.films.length = null;
                   if (this.titleValue == ""){
                     this.searchResult = `Please Search!`;
                   }else {
@@ -61,6 +53,10 @@ export class FilmsListComponent implements OnInit {
                   }
                   console.log("Not Found")
                 }
+                  this.router.navigate(['films'], {queryParams: {q: this.titleValue}});
+                  if (this.titleValue == ""){
+                    this.router.navigate(['films'])
+                  }
               }
             )
         }
@@ -68,9 +64,6 @@ export class FilmsListComponent implements OnInit {
   }
 
   onNext(){
-    if (this.count >= 1) {
-      this.disabledPrevButton = true
-    }
       this.count++;
     this.isDone = false;
     this.filmService.getNextFilms(this.titleValue, this.count)
@@ -81,22 +74,19 @@ export class FilmsListComponent implements OnInit {
             for (let key in data){
               myArr.push(data[key])
             }
-            this.films = myArr[0]
+            this.films = myArr[0];
             this.isDone = true
           }else {
             this.isDone = true;
             this.films = null;
             console.log("Not Found");
-            this.disabledNextButton = false
           }
+          this.router.navigate(['films'], {queryParams: {q: this.titleValue, page: this.count}})
         }
       )
   }
 
   onPrevious(){
-    if (this.count <= 2){
-      this.disabledPrevButton = false
-    }
     this.count--;
     this.isDone = false;
     this.filmService.getNextFilms(this.titleValue, this.count)
@@ -109,12 +99,12 @@ export class FilmsListComponent implements OnInit {
             }
             this.films = myArr[0];
             this.isDone = true;
-            this.disabledNextButton = true
           }else {
             this.isDone  = true;
             this.films = null;
             console.log("Not Found");
           }
+          this.router.navigate(['films'], {queryParams: {q: this.titleValue, page: this.count}})
         }
       )
   }

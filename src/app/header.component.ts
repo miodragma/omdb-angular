@@ -1,5 +1,5 @@
 import { Component, DoCheck } from '@angular/core';
-import { Location } from '@angular/common';
+
 import { CompareFilmsService } from "./compare-films/compare-films.service";
 
 
@@ -11,13 +11,15 @@ import { CompareFilmsService } from "./compare-films/compare-films.service";
 export class HeaderComponent implements DoCheck {
 
   isNavbarCollapsed: boolean = true;
-
   countLength: number;
 
-  constructor(private compareFilmsService: CompareFilmsService, private location: Location){
+  constructor(private compareFilmsService: CompareFilmsService ){
   }
+
 
   ngDoCheck() {
      this.countLength = this.compareFilmsService.getFilmsLength()
   }
+
+
 }

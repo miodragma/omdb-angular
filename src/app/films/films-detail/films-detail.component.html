@@ -40,17 +40,17 @@
               <span [ngClass]="{detailBodyItems: true}">{{ selectedFilm?.Writer }}</span>
             </h5>
             <h5 *ngIf="selectedFilm?.Actors && selectedFilm?.Actors !== 'N/A'">
-              <b [ngStyle]="{color: '#5e5e5e'}">Stars: </b>
+              <b [ngStyle]="{color: '#5e5e5e'}">Actors: </b>
               <span [ngClass]="{detailBodyItems: true}">{{ selectedFilm?.Actors }}</span>
             </h5>
             <h5 *ngIf="selectedFilm?.Production && selectedFilm?.Production !== 'N/A'">
               <b [ngStyle]="{color: '#5e5e5e'}">Production: </b>
               <span [ngClass]="{detailBodyItems: true}">{{ selectedFilm?.Production }}</span>
             </h5>
-            <h5 *ngIf="selectedFilm?.Website && selectedFilm?.Website !== 'N/A'">
-              <b [ngStyle]="{color: '#5e5e5e'}">Web: </b>
-              <a href="{{ selectedFilm?.Website }}" target="_blank" [ngClass]="{detailBodyItems: true}">{{ selectedFilm?.Website }}</a>
-            </h5>
+            <div *ngIf="selectedFilm?.Website && selectedFilm?.Website !== 'N/A'">
+              <small [ngStyle]="{color: '#5e5e5e'}">Official Site: </small>
+              <a href="{{ selectedFilm?.Website }}" target="_blank" [ngClass]="{detailBodyItems: true}">Click to GO!</a>
+            </div>
             <small [ngStyle]="{color: '#5e5e5e'}">link to IMDB: </small>
             <a href="{{ linkToImdb }}" target="_blank" [ngClass]="{detailBodyItems: true}">Click to GO!</a>
             <h5 *ngIf="selectedFilm?.totalSeasons">

@@ -19,6 +19,7 @@ import { FilmsStartComponent } from './films/films-start.component';
 import { DropdownDirective } from './films/dropdown.directive';
 import { Ng2PageScrollModule } from "ng2-page-scroll";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NotFoundComponent } from './films/not-found.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     EpisodesItemComponent,
     CompareFilmsComponent,
     FilmsStartComponent,
-    DropdownDirective
+    DropdownDirective,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

@@ -6,7 +6,7 @@ import { EpisodesComponent } from "./episodes/episodes.component";
 
 export const FILMS_ROUTES: Routes = [
   { path: '', component: FilmsStartComponent },
-  { path: ':id', component: FilmsDetailComponent },
-  { path: ':id/:season', component: EpisodesComponent },
-  { path: ':id/:season', component: FilmsDetailComponent },
+  { path: ':q/:id', component: FilmsDetailComponent },
+  { path: ':q/:id/:season', component: EpisodesComponent },
+  { path: ':q/:id/:season', component: FilmsDetailComponent },
 ];

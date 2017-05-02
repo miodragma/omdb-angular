@@ -1,8 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
+import { Router } from "@angular/router";
 
 import { Film } from "../film";
-import {FilmsService} from "../films.service";
 
 @Component({
   selector: 'omdb-film-episodes-item',
@@ -18,8 +17,8 @@ export class EpisodesItemComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSelectedEpisode(value: any){
-    this.router.navigate(['/films', value])
+  onSelectedEpisode(title: string, value: any){
+    this.router.navigate(['/films', title, value])
   }
 
 }

@@ -1,11 +1,11 @@
 <div class="row">
   <div class="col-xs-12">
-    <button class="btn btn-default pull-left" (click)="onPrevious()" [disabled]="!disabledPrevButton">Previous</button>
-    <button class="btn btn-default pull-right" (click)="onNext()" [disabled]="!disabledNextButton">Next</button>
+    <button class="btn btn-default pull-left" (click)="onPrevious()" [disabled]="count <= 1">Previous</button>
+    <button class="btn btn-default pull-right" (click)="onNext()" [disabled]="films.length < 10">Next</button>
     <form>
       <div class="form-group" [ngStyle]="{'margin-bottom': '0'}">
         <label for="title"></label>
-        <input class="form-control" placeholder="Search..." [formControl]="filmFormControl" type=text id="title" autocomplete="off" autofocus>
+        <input class="form-control"  placeholder="Search..." [formControl]="filmFormControl" type=text id="title" autocomplete="off" autofocus>
       </div>
     </form>
     <div>
