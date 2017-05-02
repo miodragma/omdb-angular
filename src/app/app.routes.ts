@@ -1,9 +1,9 @@
-import { RouterModule, Routes} from "@angular/router";
-import { FILMS_ROUTES } from "./films/films.routes";
+import { RouterModule, Routes} from '@angular/router';
+import { FILMS_ROUTES } from './films/films.routes';
 
-import { FilmsComponent } from "./films/films.component";
-import { CompareFilmsComponent } from "./compare-films/compare-films.component";
-import { NotFoundComponent } from "./films/not-found.component";
+import { FilmsComponent } from './films/films.component';
+import { CompareFilmsComponent } from './compare-films/compare-films.component';
+import { NotFoundComponent } from './films/not-found.component';
 
 const APP_ROUTES_PROVIDERS: Routes = [
   { path: '', redirectTo: '/films', pathMatch: 'full' },

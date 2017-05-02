@@ -4,5 +4,5 @@ import { Component } from '@angular/core';
   selector: 'omdb-film-films',
   templateUrl: './films.component.html'
 })
-export class FilmsComponent{
+export class FilmsComponent {
 }

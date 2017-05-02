@@ -1,4 +1,4 @@
-import { Rating } from "../compare-films/rating";
+import { Rating } from '../compare-films/rating';
 export class Film {
   constructor(
     public Title: string,

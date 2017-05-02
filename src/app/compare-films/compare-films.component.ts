@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CompareFilmsService } from "./compare-films.service";
-import { Film } from "../films/film";
+import { CompareFilmsService } from './compare-films.service';
+import { Film } from '../films/film';
 
 @Component({
   selector: 'omdb-film-compare-films',
@@ -17,8 +17,8 @@ export class CompareFilmsComponent implements OnInit {
     this.compareFilms = this.compareFilmsService.getCompareFilms();
   }
 
-  onDelete(compareFilm: number){
-    this.compareFilmsService.removeFilmsLength(this.compareFilms.length - 1)
-    this.compareFilms.splice(compareFilm, 1)
+  onDelete(compareFilm: number) {
+    this.compareFilmsService.removeFilmsLength(this.compareFilms.length - 1);
+    this.compareFilms.splice(compareFilm, 1);
   }
 }

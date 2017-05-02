@@ -1,11 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Router} from "@angular/router";
-import { Subscription} from "rxjs/Subscription";
+import { ActivatedRoute, Router} from '@angular/router';
+import { Subscription} from 'rxjs/Subscription';
 
-import { Film } from "../film";
-import { FilmsService } from "../films.service";
-import { CompareFilmsService } from "../../compare-films/compare-films.service";
-import { Location } from "@angular/common";
+import { Film } from '../film';
+import { FilmsService } from '../films.service';
+import { CompareFilmsService } from '../../compare-films/compare-films.service';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -19,9 +19,9 @@ export class FilmsDetailComponent implements OnInit, OnDestroy {
  filmsIndex: any;
  private subscription: Subscription;
  seasons: number[] = [];
- addToCompare: string = "is not added to Compare List";
- isAdd: boolean = false;
- isDone: boolean = false;
+ addToCompare = 'is not added to Compare List';
+ isAdd = false;
+ isDone = false;
  linkToImdb: any;
  titleValue: string;
 
@@ -41,39 +41,39 @@ export class FilmsDetailComponent implements OnInit, OnDestroy {
         this.titleValue = params['q'];
         this.filmsService.getDetails(this.filmsIndex).subscribe(
           data => {
-            if (data.Type === 'series'){
+            if (data.Type === 'series') {
               const myArr = [];
-              for (let i = 1; i <= +data.totalSeasons; i++){
-                myArr.push(i)
+              for (let i = 1; i <= +data.totalSeasons; i++) {
+                myArr.push(i);
               }
               this.seasons = myArr;
             }
-            this.addToCompare = "is not added to Compare List";
+            this.addToCompare = 'is not added to Compare List';
             this.selectedFilm = data;
             this.isDone = true;
             this.isAdd = false;
-            this.linkToImdb = `http://www.imdb.com/title/${this.filmsIndex}/`
+            this.linkToImdb = `http://www.imdb.com/title/${this.filmsIndex}/`;
           }
-        )
+        );
       }
-    )
+    );
   }
 
-  onAddToCompareList(){
+  onAddToCompareList() {
     this.isAdd = !this.isAdd;
-    this.addToCompare = "has been added successfully to Compare List";
-    this.compareFilms.addFilms(this.selectedFilm)
+    this.addToCompare = 'has been added successfully to Compare List';
+    this.compareFilms.addFilms(this.selectedFilm);
   }
 
-  onSelectedSeasons(season: any){
+  onSelectedSeasons(season: any) {
     this.router.navigate(['/films', this.titleValue, this.filmsIndex, season]);
   }
 
-  onClickedBack(){
-    this.location.back()
+  onClickedBack() {
+    this.location.back();
   }
 
-  ngOnDestroy(){
-    this.subscription.unsubscribe()
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

@@ -7,11 +7,11 @@ export class DropdownDirective {
 
   private isOpen = false;
 
-  @HostListener('click') open(){
+  @HostListener('click') open() {
     this.isOpen = true;
   }
 
-  @HostListener('mouseleave') close(){
+  @HostListener('mouseleave') close() {
     this.isOpen = false;
   }
 

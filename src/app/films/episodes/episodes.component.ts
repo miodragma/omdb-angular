@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
-import { FilmsService } from "../films.service";
-import { Film } from "../film";
-import { Subscription } from "rxjs/Subscription";
+import { ActivatedRoute } from '@angular/router';
+import { FilmsService } from '../films.service';
+import { Film } from '../film';
+import { Subscription } from 'rxjs/Subscription';
 import { Location } from '@angular/common';
 
 
@@ -14,7 +14,7 @@ export class EpisodesComponent implements OnInit, OnDestroy {
 
   title: string;
   titleSeason: string;
-  isDone: boolean = false;
+  isDone = false;
 
   episodes: Film[] = [];
   private subscription: Subscription;
@@ -39,22 +39,22 @@ export class EpisodesComponent implements OnInit, OnDestroy {
               this.titleSeason = data.Season;
               this.title = data.Title;
               const myArr = [];
-              for (let key in data){
-                myArr.push(data[key])
+              for (const key in data) {
+                myArr.push(data[key]);
               }
               this.episodes = myArr[3];
               this.isDone = true;
             }
-          )
+          );
       }
-    )
+    );
   }
 
-  ngOnDestroy(){
-    this.subscription.unsubscribe()
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
-  onClickedBack(){
+  onClickedBack() {
     this.location.back();
   }
 
