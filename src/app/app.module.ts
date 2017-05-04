@@ -35,7 +35,7 @@ import { NotFoundComponent } from './films/not-found.component';
     CompareFilmsComponent,
     FilmsStartComponent,
     DropdownDirective,
-    NotFoundComponent
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

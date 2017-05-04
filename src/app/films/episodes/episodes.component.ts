@@ -40,7 +40,9 @@ export class EpisodesComponent implements OnInit, OnDestroy {
               this.title = data.Title;
               const myArr = [];
               for (const key in data) {
-                myArr.push(data[key]);
+                if (data.hasOwnProperty(key)) {
+                  myArr.push(data[key]);
+                }
               }
               this.episodes = myArr[3];
               this.isDone = true;

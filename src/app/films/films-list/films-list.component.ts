@@ -35,7 +35,9 @@ export class FilmsListComponent implements OnInit {
                 if (data.Response !== 'False') {
                   const myArr = [];
                   for (const key in data) {
-                    myArr.push(data[key]);
+                    if (data.hasOwnProperty(key)) {
+                      myArr.push(data[key]);
+                    }
                   }
                   this.searchResult = `Result for "${this.titleValue}"`;
                   this.count = 1;
@@ -70,7 +72,9 @@ export class FilmsListComponent implements OnInit {
           if (data.Response !== 'False') {
             const myArr = [];
             for (const key in data) {
-              myArr.push(data[key]);
+              if (data.hasOwnProperty(key)) {
+                myArr.push(data[key]);
+              }
             }
             this.films = myArr[0];
             this.isDone = true;
@@ -93,7 +97,9 @@ export class FilmsListComponent implements OnInit {
           if (data.Response !== 'False') {
             const myArr = [];
             for (const key in data) {
-              myArr.push(data[key]);
+              if (data.hasOwnProperty(key)) {
+                myArr.push(data[key]);
+              }
             }
             this.films = myArr[0];
             this.isDone = true;
